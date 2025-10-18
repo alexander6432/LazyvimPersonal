@@ -46,13 +46,13 @@ return {
         },
       },
       menu = {
-        border = "rounded",
+        border = "single",
         draw = {
           treesitter = { "lsp" },
         },
       },
       documentation = {
-        window = { border = "rounded" },
+        window = { border = "single" },
         auto_show = true,
         auto_show_delay_ms = 200,
       },
@@ -68,21 +68,16 @@ return {
       -- adding any nvim-cmp sources here will enable them
       -- with blink.compat
       compat = {},
-      default = { "lsp", "path", "snippets", "buffer", "copilot" },
-      providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-cmp-copilot",
-          kind = "Copilot",
-          score_offset = 100,
-          async = true,
-        },
-      },
+      default = { "lsp", "path", "snippets", "buffer" },
     },
 
     cmdline = {
       enabled = true,
-      keymap = { preset = "cmdline" },
+      keymap = {
+        preset = "cmdline",
+        ["<Right>"] = false,
+        ["<Left>"] = false,
+      },
       completion = {
         list = { selection = { preselect = false } },
         menu = {
@@ -119,12 +114,12 @@ return {
       if opts.keymap.preset == "super-tab" then -- super-tab
         opts.keymap["<Tab>"] = {
           require("blink.cmp.keymap.presets").get("super-tab")["<Tab>"][1],
-          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          LazyVim.cmp.map({ "snippet_forward", "ai_nes", "ai_accept" }),
           "fallback",
         }
       else -- other presets
         opts.keymap["<Tab>"] = {
-          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          LazyVim.cmp.map({ "snippet_forward", "ai_nes", "ai_accept" }),
           "fallback",
         }
       end
