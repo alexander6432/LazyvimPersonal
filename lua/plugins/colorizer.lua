@@ -42,7 +42,7 @@ return {
       -- Virtualtext character to use
       virtualtext = "",
       -- Display virtualtext inline with color.  boolean|'before'|'after'.  True sets to 'after'
-      virtualtext_inline = "after",
+      virtualtext_inline = "before",
       -- Virtualtext highlight mode: 'background'|'foreground'
       virtualtext_mode = "foreground",
       -- update color values even if buffer is not focused
